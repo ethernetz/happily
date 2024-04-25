@@ -11,6 +11,10 @@
 		30C78BBA2BB7170300EE1C4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BB92BB7170300EE1C4F /* ContentView.swift */; };
 		30C78BBC2BB7170500EE1C4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C78BBB2BB7170500EE1C4F /* Assets.xcassets */; };
 		30C78BBF2BB7170500EE1C4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C78BBE2BB7170500EE1C4F /* Preview Assets.xcassets */; };
+		30C78BC72BB71C1000EE1C4F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 30C78BC62BB71C1000EE1C4F /* Realm */; };
+		30C78BC92BB71C1000EE1C4F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30C78BC82BB71C1000EE1C4F /* RealmSwift */; };
+		30C78BCB2BB9938800EE1C4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BCA2BB9938800EE1C4F /* AppState.swift */; };
+		30C78BCD2BB994C700EE1C4F /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BCC2BB994C700EE1C4F /* Spot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,9 @@
 		30C78BB92BB7170300EE1C4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30C78BBB2BB7170500EE1C4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30C78BBE2BB7170500EE1C4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		30C78BCA2BB9938800EE1C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		30C78BCC2BB994C700EE1C4F /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		30D841692BDA09DA00173207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C78BC92BB71C1000EE1C4F /* RealmSwift in Frameworks */,
+				30C78BC72BB71C1000EE1C4F /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +60,13 @@
 		30C78BB62BB7170300EE1C4F /* happily */ = {
 			isa = PBXGroup;
 			children = (
+				30D841692BDA09DA00173207 /* Info.plist */,
 				30C78BB72BB7170300EE1C4F /* happilyApp.swift */,
 				30C78BB92BB7170300EE1C4F /* ContentView.swift */,
 				30C78BBB2BB7170500EE1C4F /* Assets.xcassets */,
 				30C78BBD2BB7170500EE1C4F /* Preview Content */,
+				30C78BCA2BB9938800EE1C4F /* AppState.swift */,
+				30C78BCC2BB994C700EE1C4F /* Spot.swift */,
 			);
 			path = happily;
 			sourceTree = "<group>";
@@ -83,6 +95,10 @@
 			dependencies = (
 			);
 			name = happily;
+			packageProductDependencies = (
+				30C78BC62BB71C1000EE1C4F /* Realm */,
+				30C78BC82BB71C1000EE1C4F /* RealmSwift */,
+			);
 			productName = happily;
 			productReference = 30C78BB42BB7170300EE1C4F /* happily.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +127,9 @@
 				Base,
 			);
 			mainGroup = 30C78BAB2BB7170300EE1C4F;
+			packageReferences = (
+				30C78BC52BB71C1000EE1C4F /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 30C78BB52BB7170300EE1C4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C78BCB2BB9938800EE1C4F /* AppState.swift in Sources */,
 				30C78BBA2BB7170300EE1C4F /* ContentView.swift in Sources */,
 				30C78BB82BB7170300EE1C4F /* happilyApp.swift in Sources */,
+				30C78BCD2BB994C700EE1C4F /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +296,8 @@
 				DEVELOPMENT_TEAM = 695367Z85M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = happily/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need the loc!!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +327,8 @@
 				DEVELOPMENT_TEAM = 695367Z85M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = happily/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need the loc!!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -344,6 +369,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30C78BC52BB71C1000EE1C4F /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.49.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30C78BC62BB71C1000EE1C4F /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30C78BC52BB71C1000EE1C4F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		30C78BC82BB71C1000EE1C4F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30C78BC52BB71C1000EE1C4F /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30C78BAC2BB7170300EE1C4F /* Project object */;
 }

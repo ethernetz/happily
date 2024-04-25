@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
-
+import RealmSwift
+let app = RealmSwift.App(id: "application-0-fvtyw") // TODO: Set the Realm application ID
 @main
-struct happilyApp: App {
-    var body: some Scene {
-        WindowGroup {
+struct happilyApp: SwiftUI.App {
+   @StateObject var state = AppState()
+
+   var body: some Scene {
+      WindowGroup {
             ContentView()
-        }
-    }
+               .environmentObject(state)
+      }
+   }
 }
