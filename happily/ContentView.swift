@@ -23,12 +23,18 @@ struct LocationOfIntrest: Identifiable {
 
 struct ContentView: View {
     @Environment(\.isPreview) var isPreview
-//    @ObservedResults(Spot.self) var observedSpots
-//    var spots: [Spot] {
-//        isPreview ? Spot.spotArray : Array(observedSpots)
-//    }
 
-    var spots = Spot.spotArray
+    let configuration: Realm.Configuration?
+    @ObservedResults(Spot.self, configuration: nil) private var observedSpots
+
+    init(configuration: Realm.Configuration?) {
+        self.configuration = configuration
+        _observedSpots = ObservedResults(Spot.self, configuration: configuration)
+    }
+
+    var spots: [Spot] {
+        isPreview ? Spot.spotArray : Array(observedSpots)
+    }
 
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.748817, longitude: -73.985428),
@@ -75,5 +81,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(configuration: nil)
 }

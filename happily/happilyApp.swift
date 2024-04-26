@@ -2,33 +2,47 @@ import RealmSwift
 import SwiftUI
 
 @main
-struct happilyApp: SwiftUI.App {
+struct HappilyApp: SwiftUI.App {
     let realmAppConfig: AppConfig
     let app: RealmSwift.App
     let errorHandler: ErrorHandler
+
+    @State private var configuration: Realm.Configuration?
+
     init() {
         realmAppConfig = loadRealmAppConfig()
-        app = App(id: realmAppConfig.appId, configuration: AppConfiguration(baseURL: realmAppConfig.baseUrl, transport: nil))
+        app = App(id: realmAppConfig.appId, configuration: AppConfiguration(baseURL: realmAppConfig.baseUrl))
         errorHandler = ErrorHandler(app: app)
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(errorHandler)
-                .task {
-                    if let user = try? await RealmManager.shared.getUser(app: app) {
-                        print("Signed in as \(user)")
-                        do {
-                            let data = try await RealmManager.shared.fetchSpots(user: user)
-                            print("Got data \(data.count)")
-                        } catch {
-                            print("Error getting data: \(error.localizedDescription)")
-                        }
-                    } else {
-                        print("Failed to sign in.")
+            if let configuration = configuration {
+                ContentView(configuration: configuration)
+                    .environmentObject(errorHandler)
+            } else {
+                Text("Loading...")
+                    .onAppear {
+                        signInUser()
                     }
+            }
+        }
+    }
+
+    private func signInUser() {
+        Task {
+            if let user = try? await RealmManager.shared.getUser(app: app) {
+                print("Signed in as \(user)")
+                configuration = user.flexibleSyncConfiguration()
+                do {
+                    let data = try await RealmManager.shared.fetchSpots(user: user)
+                    print("Got data \(data.count)")
+                } catch {
+                    print("Error getting data: \(error.localizedDescription)")
                 }
+            } else {
+                print("Failed to sign in.")
+            }
         }
     }
 }
