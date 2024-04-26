@@ -17,20 +17,13 @@ struct happilyApp: SwiftUI.App {
             ContentView()
                 .environmentObject(errorHandler)
                 .task {
-                    if let user = try? await getUser(app: app) {
+                    if let user = try? await RealmManager.shared.getUser(app: app) {
                         print("Signed in as \(user)")
                         do {
                             let data = try await RealmManager.shared.fetchSpots(user: user)
                             print("Got data \(data.count)")
-
-//                            try await RealmManager.shared.addDog(user: user)
-//
-//                            let afterData = try await RealmManager.shared.fetchSpots(user: user)
-//                            print("Got afterData \(afterData.count)")
                         } catch {
-                            // Log the error details here
                             print("Error getting data: \(error.localizedDescription)")
-                            // You can also implement more sophisticated logging mechanisms like os_log
                         }
                     } else {
                         print("Failed to sign in.")
@@ -50,13 +43,5 @@ final class ErrorHandler: ObservableObject {
                 self?.error = syncError
             }
         }
-    }
-}
-
-func getUser(app: RealmSwift.App) async throws -> User {
-    if let user = app.currentUser {
-        return user
-    } else {
-        return try await app.login(credentials: Credentials.anonymous)
     }
 }
