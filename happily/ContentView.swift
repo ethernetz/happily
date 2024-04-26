@@ -61,7 +61,7 @@ struct ContentView: View {
         Text("My spots:")
         List {
             ForEach(spots) { spot in
-                Text(spot.name ?? "My placeholder")
+                Text("Longitude: \(String(describing: spot.coordinates?.coordinates[0])), Latitude: \(String(describing: spot.coordinates?.coordinates[1]))")
             }
         }
 //        Map(

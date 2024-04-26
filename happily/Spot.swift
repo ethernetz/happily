@@ -16,24 +16,21 @@ class Spot: Object, ObjectKeyIdentifiable {
     @Persisted var uniqueName: String?
     @Persisted var url: String?
     @Persisted var googlePlaceId: String?
-    @Persisted var google_place_id: String?
-//    @Persisted var coordinates: GeoPoint?
+    @Persisted var coordinates: Coordinates?
 
-    convenience init(name: String?, address: String?, url: String?, uniqueName: String?, checkedForHappyHours: Bool?, google_place_id: String?, googlePlaceId: String?, longitude: Double, latitude: Double) {
+    convenience init(name: String?, address: String?, url: String?, uniqueName: String?, checkedForHappyHours: Bool?, google_place_id: String?, googlePlaceId: String?, coordinates: Coordinates) {
         self.init()
         self.name = name
         self.address = address
         self.url = url
         self.uniqueName = uniqueName
         self.checkedForHappyHours = checkedForHappyHours ?? false // Handle optional Bool properly
-        self.google_place_id = google_place_id
         self.googlePlaceId = googlePlaceId
-//        self.coordinates = GeoPoint(longitude: longitude, latitude: latitude)
+        self.coordinates = coordinates
     }
 }
 
-class GeoPoint: EmbeddedObject {
-    @Persisted var type: String = "Point"
+class Coordinates: EmbeddedObject {
     @Persisted var coordinates: List<Double> // Longitude first, then Latitude
 
     convenience init(longitude: Double, latitude: Double) {
@@ -51,8 +48,7 @@ extension Spot {
         checkedForHappyHours: false,
         google_place_id: "google_place_id_mock",
         googlePlaceId: "googlePlaceId_mock",
-        longitude: 0.0,
-        latitude: 0.0
+        coordinates: Coordinates(longitude: 0.0, latitude: 0.0)
     )
     static let spotArray = [spot1]
 }
