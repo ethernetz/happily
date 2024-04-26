@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		306C6F812BDAA902008730D9 /* RealmAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C6F802BDAA901008730D9 /* RealmAppConfig.swift */; };
+		306C6F832BDAA99E008730D9 /* atlasConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 306C6F822BDAA99E008730D9 /* atlasConfig.plist */; };
+		306C6F872BDABA5B008730D9 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C6F862BDABA5B008730D9 /* EnvironmentValues.swift */; };
+		306C6F892BDB1950008730D9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306C6F882BDB1950008730D9 /* RealmManager.swift */; };
 		30C78BB82BB7170300EE1C4F /* happilyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BB72BB7170300EE1C4F /* happilyApp.swift */; };
 		30C78BBA2BB7170300EE1C4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BB92BB7170300EE1C4F /* ContentView.swift */; };
 		30C78BBC2BB7170500EE1C4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C78BBB2BB7170500EE1C4F /* Assets.xcassets */; };
 		30C78BBF2BB7170500EE1C4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C78BBE2BB7170500EE1C4F /* Preview Assets.xcassets */; };
 		30C78BC72BB71C1000EE1C4F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 30C78BC62BB71C1000EE1C4F /* Realm */; };
 		30C78BC92BB71C1000EE1C4F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30C78BC82BB71C1000EE1C4F /* RealmSwift */; };
-		30C78BCB2BB9938800EE1C4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BCA2BB9938800EE1C4F /* AppState.swift */; };
 		30C78BCD2BB994C700EE1C4F /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C78BCC2BB994C700EE1C4F /* Spot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		306C6F802BDAA901008730D9 /* RealmAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAppConfig.swift; sourceTree = "<group>"; };
+		306C6F822BDAA99E008730D9 /* atlasConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = atlasConfig.plist; sourceTree = "<group>"; };
+		306C6F862BDABA5B008730D9 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		306C6F882BDB1950008730D9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		30C78BB42BB7170300EE1C4F /* happily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = happily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C78BB72BB7170300EE1C4F /* happilyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happilyApp.swift; sourceTree = "<group>"; };
 		30C78BB92BB7170300EE1C4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30C78BBB2BB7170500EE1C4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30C78BBE2BB7170500EE1C4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		30C78BCA2BB9938800EE1C4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		30C78BCC2BB994C700EE1C4F /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		30D841692BDA09DA00173207 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,8 +71,11 @@
 				30C78BB92BB7170300EE1C4F /* ContentView.swift */,
 				30C78BBB2BB7170500EE1C4F /* Assets.xcassets */,
 				30C78BBD2BB7170500EE1C4F /* Preview Content */,
-				30C78BCA2BB9938800EE1C4F /* AppState.swift */,
 				30C78BCC2BB994C700EE1C4F /* Spot.swift */,
+				306C6F802BDAA901008730D9 /* RealmAppConfig.swift */,
+				306C6F822BDAA99E008730D9 /* atlasConfig.plist */,
+				306C6F862BDABA5B008730D9 /* EnvironmentValues.swift */,
+				306C6F882BDB1950008730D9 /* RealmManager.swift */,
 			);
 			path = happily;
 			sourceTree = "<group>";
@@ -145,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C78BBF2BB7170500EE1C4F /* Preview Assets.xcassets in Resources */,
+				306C6F832BDAA99E008730D9 /* atlasConfig.plist in Resources */,
 				30C78BBC2BB7170500EE1C4F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,9 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30C78BCB2BB9938800EE1C4F /* AppState.swift in Sources */,
+				306C6F872BDABA5B008730D9 /* EnvironmentValues.swift in Sources */,
 				30C78BBA2BB7170300EE1C4F /* ContentView.swift in Sources */,
+				306C6F812BDAA902008730D9 /* RealmAppConfig.swift in Sources */,
 				30C78BB82BB7170300EE1C4F /* happilyApp.swift in Sources */,
+				306C6F892BDB1950008730D9 /* RealmManager.swift in Sources */,
 				30C78BCD2BB994C700EE1C4F /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

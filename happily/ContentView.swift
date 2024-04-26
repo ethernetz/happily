@@ -22,6 +22,14 @@ struct LocationOfIntrest: Identifiable {
 }
 
 struct ContentView: View {
+    @Environment(\.isPreview) var isPreview
+//    @ObservedResults(Spot.self) var observedSpots
+//    var spots: [Spot] {
+//        isPreview ? Spot.spotArray : Array(observedSpots)
+//    }
+
+    var spots = Spot.spotArray
+
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 40.748817, longitude: -73.985428),
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
@@ -44,19 +52,25 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        Map(
-            position: $position,
-            bounds: MapCameraBounds(minimumDistance: 100, maximumDistance: 4000000)
-        ) {
-            ForEach(locations) { item in
-                Marker(
-                    "Hey",
-                    coordinate: item.coordinate
-                ).tint(item.tint)
+        Text("My spots:")
+        List {
+            ForEach(spots) { spot in
+                Text(spot.name ?? "My placeholder")
             }
-        }.onAppear {
-            CLLocationManager().requestWhenInUseAuthorization()
         }
+//        Map(
+//            position: $position,
+//            bounds: MapCameraBounds(minimumDistance: 100, maximumDistance: 4000000)
+//        ) {
+//            ForEach(locations) { item in
+//                Marker(
+//                    "Hey",
+//                    coordinate: item.coordinate
+//                ).tint(item.tint)
+//            }
+//        }.onAppear {
+//            CLLocationManager().requestWhenInUseAuthorization()
+//        }
     }
 }
 
