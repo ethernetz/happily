@@ -21,7 +21,7 @@ struct HappilyApp: SwiftUI.App {
                 ContentView(configuration: configuration)
                     .environmentObject(errorHandler)
             } else {
-                Text("Loading...")
+                Text("Signing in...")
                     .onAppear {
                         signInUser()
                     }

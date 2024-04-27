@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  happily
-//
-//  Created by Ethan Netz on 3/29/24.
-//
-
 import MapKit
 import RealmSwift
 import SwiftUI
@@ -29,7 +22,9 @@ struct ContentView: View {
 
     init(configuration: Realm.Configuration?) {
         self.configuration = configuration
-        _observedSpots = ObservedResults(Spot.self, configuration: configuration)
+        _observedSpots = ObservedResults(Spot.self, configuration: configuration, where: ({ $0.coordinates != nil &&
+                $0.coordinates.coordinates.count == 2
+        }))
     }
 
     var spots: [Spot] {
@@ -48,35 +43,23 @@ struct ContentView: View {
         longitude: -74.00424135952183
     )
 
-    let locations = [
-        LocationOfIntrest(
-            coordinate: CLLocationCoordinate2D(
-                latitude: MapDefaults.latitude,
-                longitude: MapDefaults.longitude
-            )
-        ),
-    ]
-
     var body: some View {
-        Text("My spots:")
-        List {
+        Map(
+            position: $position,
+            bounds: MapCameraBounds(minimumDistance: 100, maximumDistance: 4000000)
+        ) {
             ForEach(spots) { spot in
-                Text("Longitude: \(String(describing: spot.coordinates?.coordinates[0])), Latitude: \(String(describing: spot.coordinates?.coordinates[1]))")
+                Marker(
+                    spot.name,
+                    coordinate: CLLocationCoordinate2D(
+                        latitude: spot.coordinates!.coordinates[1],
+                        longitude: spot.coordinates!.coordinates[0]
+                    )
+                )
             }
+        }.onAppear {
+            CLLocationManager().requestWhenInUseAuthorization()
         }
-//        Map(
-//            position: $position,
-//            bounds: MapCameraBounds(minimumDistance: 100, maximumDistance: 4000000)
-//        ) {
-//            ForEach(locations) { item in
-//                Marker(
-//                    "Hey",
-//                    coordinate: item.coordinate
-//                ).tint(item.tint)
-//            }
-//        }.onAppear {
-//            CLLocationManager().requestWhenInUseAuthorization()
-//        }
     }
 }
 

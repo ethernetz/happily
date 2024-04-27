@@ -21,7 +21,9 @@ actor RealmManager {
 
     func fetchSpots(user: User) async throws -> [Spot] {
         let realm = try await getRealm(user: user)
-        let results = try await realm.objects(Spot.self).subscribe(name: "sub_to_spots")
+        let results = try await realm.objects(Spot.self).where {
+            $0.checkedForHappyHours
+        }.subscribe(name: "sub_to_spots")
         return Array(results)
     }
 }
